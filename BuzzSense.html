@@ -18,9 +18,9 @@
             function populateOccupancy(bld,flr)
             {
                 var url = 'http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr;
-                console.log(url);
-                fetch(url).then(response => response.json()).then(rj => occupancy = rj);
-                console.log(occupancy);
+                fetch(url).then(response => response.json()).then(rj => {
+                    occupancy = rj;
+                });
                 if (occupancy == "high" || occupancy == "medium" || occupancy == "low"){
                     var occupancyText = document.getElementById("occupancyResults");
                     var standard = document.createTextNode("The occupancy on this floor is " + occupancy.toUpperCase() + " !");
