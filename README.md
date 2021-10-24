@@ -5,10 +5,14 @@
 
 ### other solutions attempted / ruled out
 
-1. using SNMP to get a router's ARP table instead of actively scanning for packets and trying to isolate unique users (which would require less hardware etc)
-2. Bluetooth LE
+- using SNMP to get a router's ARP table instead of actively scanning for packets and trying to isolate unique users (which would require less hardware etc)
+- Bluetooth LE
 
-## mo
+## more features / roadmap
+
+- actually store (hashed?) mac addresses / track users over time
+- get data collected over a longer period of time to look for trends
+- make graphs & heatmaps so the website is nicer and more informative
 
 ## Setup
 ### Main computer setup
