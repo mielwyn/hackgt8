@@ -16,6 +16,7 @@
             var culcImages = ["./Culc/culc1.png", "./Culc/culc2.png", "./Culc/culc3.png", "./Culc/culc4.png", "./Culc/culc5.png"];
             function populateOccupancy(bld,flr)
             {
+                document.getElementById("occupancyResults").innerHTML = "";
                 var occupancy;
                 var url = 'http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr;
                 fetch(url).then(response => response.json()).then(rj => {
@@ -99,7 +100,7 @@
 
             function handleGround(){
                 if (whichBuilding=="crossland"){
-                    populateOccupancy("chi","room");
+                    populateOccupancy("crossland",0);
                     document.getElementById("buildingImage").src = crosslandImages[0];
 
                 }
@@ -235,12 +236,14 @@
              }
              .body{
                 background-color: white;
-                font-family: Georgia;
+                font-family: 'Roboto', sans-serif;
+                font-size: 15pt;
             }
             .row{
                 column-gap: 50px;
             }
             .BuzzSenseContainer{
+
                 height: 14%;
                 background-color: #B3A369;
                 margin-bottom: 30px;
@@ -272,7 +275,14 @@
             .occupancyResults{
                 text-align: center;
             }
+
+            button {
+
+                border-radius: 8px;
+
+            }
             .button{
+
                 margin-top: 10px;
                 margin-right: 5px;
                 margin-left: 5px;
@@ -285,7 +295,10 @@
             padding-left:0;
              }
             .headButt{ 
+
+            border-radius: 0px !important;
             border: 2px solid black;
+            border-color: #003057;
             background-color: white;
             color: black;
             padding: 10x 5px;
@@ -296,16 +309,49 @@
             display:block; 
             float:left;
             border-left: 0px;
-            border-bottom: 0px;
+            
+            
             }
+
+            .buttonCollection{
+                margin-bottom:20px;
+            }
+
+            #firstButton{
+                font-family: 'Roboto', sans-serif;
+                font-size: 15pt;
+                margin-left: 18%;
+
+            }
+
+            #middleButton{
+                font-family: 'Roboto', sans-serif;
+                font-size: 15pt;
+            }
+
+            #lastButton{
+                font-family: 'Roboto', sans-serif;
+                font-size: 15pt;
+                border-right: 0;
+            }
+
+            #occupancyResults{
+                background-color: #B3A369;
+                height: 50px;
+                border-radius: 30px;
+                padding-top: 8px;
+
+
+            }
+
         </style> 
             <div class="BuzzSenseContainer row justify-content-center">
-                    <img  class = "BuzzSense"alt ="BuzzSense Occupancy System" src="buzzsenseblue.png" >
+                    <img  class = "BuzzSense "alt ="BuzzSense Occupancy System" src="buzzsenseblue.png" >
                     <div class="selectors building row padding-0 no-gutters">
-                    <div>
-                       <button class="headButt" type="button" onclick=showCulc()>CULC</button><!---->
-                       <button class="headButt" type="button" onclick=showPrice()>Price Gilbert</button><!---->
-                       <button class="headButt" type="button" onclick=showCrossland()>Crossland Tower</button>
+                    <div class = "buttonCollection">
+                       <button class="headButt" id = "firstButton" type="button" onclick=showCulc()>CULC</button><!---->
+                       <button class="headButt" id= "middleButton" type="button" onclick=showPrice()>Price Gilbert</button><!---->
+                       <button class="headButt" id = "lastButton" type="button" onclick=showCrossland()>Crossland Tower</button>
                     </div>
                 </div>                      
             </div>
@@ -352,10 +398,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col justify-content-center">
                     <div class="occupancyResults justify-content-center" id = "occupancyResults">
+                        Pick a building and floor to find the occupancy of the floor!
                     </div>
-                </div>
             </div>
         </div>
     </body>
