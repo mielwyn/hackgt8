@@ -3,12 +3,14 @@ import requests
 from scapy.all import *
 import json
 
+server_ip = 'http://128.61.26.2:3000/submitdata'
+location_name = 'chiroom' #proof of concept / run in Chi's room
+
 while True:
 	os.system('sh s.sh')
 
 	# rdpcap comes from scapy and loads in our pcap file
 	packets = rdpcap('testfile.pcap')
-	server_ip = 'http://128.61.26.2:3000'
 	ipdict = {}
 	counter = 0
 	for packet in packets:
@@ -28,6 +30,6 @@ while True:
 				ipdict[packet[IP].src] = 1
 				ipdict[packet[IP].dst] = 1
 				counter += 2
-	toSend = {'name':'chipi','num_unique':counter}
+	toSend = {'name':location_name,'num_unique':counter}
 	r = requests.post(server_ip,data=toSend)
-	time.sleep(600)
+	time.sleep(300)
