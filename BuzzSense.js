@@ -7,7 +7,7 @@ function populateOccupancy(bld,flr)
 {
     document.getElementById("occupancyResults").innerHTML = "";
     var occupancy;
-    var url = 'http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr;
+    var url = 'http://'+location.host+'/mostrecentdata?building='+bld+'&floor='+flr;
     fetch(url).then(response => response.json()).then(rj => {
         occupancy = JSON.parse(JSON.stringify(rj))['occupancy'];
         console.log(occupancy);
