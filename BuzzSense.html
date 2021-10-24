@@ -12,7 +12,8 @@
             var whichBuilding;
             var crosslandImages = [ "./Crossland/crossland0.png","./Crossland/crossland1.png","./Crossland/crossland2.png","./Crossland/crossland3.png",
                                     "./Crossland/crossland4.png","./Crossland/crossland5.png","./Crossland/crossland6.png","./Crossland/crossland7.png"];
-            var priceImages = [];                        
+            var priceImages = ["./Price/price0.png","./Price/price12.png", "./Price/price34.png"];                        
+            var culcImages = ["./Culc/culc1.png", "./Culc/culc2.png", "./Culc/culc3.png", "./Culc/culc4.png", "./Culc/culc5.png"];
 
             function defaultPage(){
                 whichBuilding = "";
@@ -28,8 +29,10 @@
             }
                     
             function showCulc(){
-                //add culc no highlight pic
                 whichBuilding = "culc";
+                document.getElementById("buildingImage").src = "./Culc/culc.png";
+
+
                 document.getElementById("ground").classList.add("hidden");
 
                 document.getElementById("first").classList.remove("hidden");
@@ -45,8 +48,9 @@
 
             }
             function showPrice(){
-                //add price no highlight pic
                 whichBuilding = "price";
+                document.getElementById("buildingImage").src = "./Price/price.png";
+
                 document.getElementById("ground").classList.remove("hidden");
                 document.getElementById("first").classList.remove("hidden");
                 document.getElementById("second").classList.remove("hidden");
@@ -94,6 +98,10 @@
                     document.getElementById("buildingImage").src = priceImages[1];
 
                 }
+                else if (whichBuilding == "culc"){
+                    document.getElementById("buildingImage").src = culcImages[0];
+
+                }
              
             }
 
@@ -103,7 +111,11 @@
 
                 }
                 else if (whichBuilding == "price"){
-                    document.getElementById("buildingImage").src = priceImages[2];
+                    document.getElementById("buildingImage").src = priceImages[1];
+
+                }
+                else if (whichBuilding == "culc"){
+                    document.getElementById("buildingImage").src = culcImages[1];
 
                 }
              
@@ -114,7 +126,11 @@
 
                 }
                 else if (whichBuilding == "price"){
-                    document.getElementById("buildingImage").src = priceImages[3];
+                    document.getElementById("buildingImage").src = priceImages[2];
+
+                }
+                else if (whichBuilding == "culc"){
+                    document.getElementById("buildingImage").src = culcImages[2];
 
                 }
              
@@ -125,7 +141,11 @@
 
                 }
                 else if (whichBuilding == "price"){
-                    document.getElementById("buildingImage").src = priceImages[4];
+                    document.getElementById("buildingImage").src = priceImages[2];
+
+                }
+                else if (whichBuilding == "culc"){
+                    document.getElementById("buildingImage").src = culcImages[3];
 
                 }
              
@@ -133,6 +153,10 @@
             function handleFifth(){
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[5];
+
+                }
+                else if (whichBuilding == "culc"){
+                    document.getElementById("buildingImage").src = culcImages[4];
 
                 }
 
@@ -218,7 +242,6 @@
                background-color: white;
                margin-left: 20px;
                border-radius: 30px;
-
                margin-right: 10px;
             }
             .occupancyResults{
