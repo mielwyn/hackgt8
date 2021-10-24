@@ -10,13 +10,21 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
         <script>
             var whichBuilding;
+            var whichFloor;
             var crosslandImages = [ "./Crossland/crossland0.png","./Crossland/crossland1.png","./Crossland/crossland2.png","./Crossland/crossland3.png",
                                     "./Crossland/crossland4.png","./Crossland/crossland5.png","./Crossland/crossland6.png","./Crossland/crossland7.png"];
             var priceImages = ["./Price/price0.png","./Price/price12.png", "./Price/price34.png"];                        
             var culcImages = ["./Culc/culc1.png", "./Culc/culc2.png", "./Culc/culc3.png", "./Culc/culc4.png", "./Culc/culc5.png"];
-
+            function getOccupancy(bld,flr)
+            {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", 'http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr+'', false ); // false for synchronous request
+                xmlHttp.send( null );
+                return xmlHttp.responseText;
+            }
             function defaultPage(){
                 whichBuilding = "";
+                whichFloor = "";
                 document.getElementById("buildingImage").src = "";
                 document.getElementById("ground").classList.add("hidden");
                 document.getElementById("first").classList.add("hidden");
@@ -30,6 +38,7 @@
                     
             function showCulc(){
                 whichBuilding = "culc";
+                whichFloor = '';
                 document.getElementById("buildingImage").src = "./Culc/culc.png";
 
 
@@ -49,6 +58,7 @@
             }
             function showPrice(){
                 whichBuilding = "price";
+                whichFloor = '';
                 document.getElementById("buildingImage").src = "./Price/price.png";
 
                 document.getElementById("ground").classList.remove("hidden");
@@ -64,6 +74,7 @@
             }
             function showCrossland(){
                 whichBuilding = "crossland";
+                whichFloor = '';
                 document.getElementById("buildingImage").src = "./Crossland/crossland.png";
 
                 document.getElementById("ground").classList.remove("hidden");
@@ -78,6 +89,7 @@
             }
 
             function handleGround(){
+                whichFloor = 'ground';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[0];
 
@@ -90,6 +102,7 @@
             }
 
             function handleFirst(){
+                whichFloor = 'first';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[1];
 
@@ -106,6 +119,7 @@
             }
 
             function handleSecond(){
+                whichFloor = 'second';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[2];
 
@@ -121,6 +135,7 @@
              
             }
             function handleThird(){
+                whichFloor = 'third';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[3];
 
@@ -136,6 +151,7 @@
              
             }
             function handleFourth(){
+                whichFloor = 'fourth';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[4];
 
@@ -151,6 +167,7 @@
              
             }
             function handleFifth(){
+                whichFloor = 'fifth';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[5];
 
@@ -163,6 +180,7 @@
              
             }
             function handleSixth(){
+                whichFloor = 'sixth';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[6];
 
@@ -171,6 +189,7 @@
              
             }
             function handleSeventh(){
+                whichFloor = 'seventh';
                 if (whichBuilding=="crossland"){
                     document.getElementById("buildingImage").src = crosslandImages[7];
 
