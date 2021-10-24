@@ -8,14 +8,16 @@
 1. using SNMP to get a router's ARP table instead of actively scanning for packets and trying to isolate unique users (which would require less hardware etc)
 2. Bluetooth LE
 
-## setup
+## mo
+
+## Setup
 ### Main computer setup
 1. clone repo
 2. cd to project directory
 3. install node.js
 4. `npm install` to get dependencies
 5. set up a config folder with a keys.js file, then put client secrets in there. use module.exports to access them from the main code.
-6. replace node.js connect string (forgot to just have that in the config file)
+6. replace node.js connect string for one pointed to your own database
 7. node ./app.js
 8. navigate to your ip address:3000 to access the website (avoid using localhost because browsers don't like out of domain GET requests)
 
