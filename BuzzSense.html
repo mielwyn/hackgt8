@@ -24,11 +24,13 @@
                     console.log(occupancy);
                     if (occupancy == "high" || occupancy == "medium" || occupancy == "low"){
                         var occupancyText = document.getElementById("occupancyResults");
-                        var standard = document.createTextNode("The occupancy on this floor is " + occupancy.toUpperCase() + " !");
+                        var standard = document.createTextNode("The occupancy on this floor is " + occupancy.toUpperCase() + "!");
                         occupancyText.appendChild(standard);
                     }
-                    else if (occupancy = "no data"){
-                        console.log("sad!");
+                    else if (occupancy == "no data"){
+                        var occupancyText = document.getElementById("occupancyResults");
+                        var standard = document.createTextNode("The occupancy of the floor is unknown.");
+                        occupancyText.appendChild(standard);
                     }
                 });
 
@@ -100,7 +102,7 @@
 
             function handleGround(){
                 if (whichBuilding=="crossland"){
-                    populateOccupancy("crossland",0);
+                    populateOccupancy("chi","room");
                     document.getElementById("buildingImage").src = crosslandImages[0];
 
                 }
