@@ -2,6 +2,7 @@
 ## project made for hackgt8 by [Joy](https://github.com/joywying), [Lauren](https://github.com/Laireen), [Chi](https://github.com/udejiofor-chidobem), and [Micah](https://github.com/mielwyn)
 
 ## description & motivation
+An occupancy tracking system for Georgia Tech (and beyond). Collects data on level of occupancy for each floor of busy buildings using number of devices connected to wireless access points. Applications in social distancing, sustainability, accessibility.
 
 ### other solutions attempted / ruled out
 
