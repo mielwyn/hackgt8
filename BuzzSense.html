@@ -17,7 +17,10 @@
             var culcImages = ["./Culc/culc1.png", "./Culc/culc2.png", "./Culc/culc3.png", "./Culc/culc4.png", "./Culc/culc5.png"];
             function populateOccupancy(bld,flr)
             {
-                fetch('http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr).then(response => response.json()).then(rj => occupancy = rj);
+                var url = 'http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr;
+                console.log(url);
+                fetch(url).then(response => response.json()).then(rj => occupancy = rj);
+                console.log(occupancy);
                 if (occupancy == "high" || occupancy == "medium" || occupancy == "low"){
                     var occupancyText = document.getElementById("occupancyResults");
                     var standard = document.createTextNode("The occupancy on this floor is " + occupancy.toUpperCase() + " !");
@@ -94,7 +97,7 @@
 
             function handleGround(){
                 if (whichBuilding=="crossland"){
-                    populateOccupancy("crossland",0);
+                    populateOccupancy("chi","room");
                     document.getElementById("buildingImage").src = crosslandImages[0];
 
                 }
@@ -197,7 +200,7 @@
             }
             function handleSixth(){
                 if (whichBuilding=="crossland"){
-                    populateOccupency("crossland",6);
+                    populateOccupancy("crossland",6);
                     document.getElementById("buildingImage").src = crosslandImages[6];
 
                 }
@@ -206,7 +209,7 @@
             }
             function handleSeventh(){
                 if (whichBuilding=="crossland"){
-                    populateOccupency("crossland",7);
+                    populateOccupancy("crossland",7);
                     document.getElementById("buildingImage").src = crosslandImages[7];
 
                 }
