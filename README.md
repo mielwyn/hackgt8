@@ -18,6 +18,7 @@
 6. navigate to your ip address:3000 to access the website (avoid using localhost because browsers don't like out of domain GET requests)
 
 ### Raspberry Pi setup
-1. put `s.sh` and `monitor.py` in the same directory (both found in `rpi-monitor` in this repo)
-2. configure the server endpoint to point to your main computer
-3. fill out the name field according to `building` + `floor` -- we went with `chiroom` because we tested with Chi's room although this doesn't follow the convention we ultimately implemented
+1. install/configure `tcpdump`
+2. put `s.sh` and `monitor.py` in the same directory (both found in `rpi-monitor` in this repo)
+3. configure the server endpoint to point to your main computer
+4. fill out the name field according to `building` + `floor` -- we went with `chiroom` because we tested with Chi's room although this doesn't follow the convention we ultimately implemented
