@@ -16,20 +16,21 @@
             var culcImages = ["./Culc/culc1.png", "./Culc/culc2.png", "./Culc/culc3.png", "./Culc/culc4.png", "./Culc/culc5.png"];
             function populateOccupancy(bld,flr)
             {
-                var occupancy = "";
+                var occupancy;
                 var url = 'http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr;
                 fetch(url).then(response => response.json()).then(rj => {
-                    occupancy = rj;
-                    
+                    occupancy = JSON.parse(JSON.stringify(rj))['occupancy'];
+                    console.log(occupancy);
+                    if (occupancy == "high" || occupancy == "medium" || occupancy == "low"){
+                        var occupancyText = document.getElementById("occupancyResults");
+                        var standard = document.createTextNode("The occupancy on this floor is " + occupancy.toUpperCase() + " !");
+                        occupancyText.appendChild(standard);
+                    }
+                    else if (occupancy = "no data"){
+                        console.log("sad!");
+                    }
                 });
 
-                if (occupancy == "high" || occupancy == "medium" || occupancy == "low"){
-                    var occupancyText = document.getElementById("occupancyResults");
-                    var standard = document.createTextNode("The occupancy on this floor is " + occupancy.toUpperCase() + " !");
-                    occupancyText.appendChild(standard);
-
-
-                }
             }
 
             function defaultPage(){

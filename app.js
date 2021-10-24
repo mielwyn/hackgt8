@@ -39,7 +39,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 				}
 				else if (collnames.indexOf(req.query.building+req.query.floor) == -1){
 					occupancyjson = {
-							'occupancy':'no data on specified building/floor'
+							'occupancy':'no data'
 						}
 					res.send(occupancyjson)
 				}
