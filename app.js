@@ -9,7 +9,6 @@ const path = require('path')
 app.use(express.static(__dirname+'/public'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
-
 // parse application/json
 app.use(bodyParser.json())
 
@@ -17,10 +16,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 	.then(client => {
 		console.log('Connected to Database')
 		const db = client.db('building-occupancy')
-		const fittenCollection = db.collection('fitten')
-		app.post('/', (req, res) => {
-			res.send('Hello World!')
-			fittenCollection.insertOne({'num_unique':req.body.num_unique,'time':Date.now()})
+		app.post('/submitdata', (req, res) => {
+			db.collection(req.body.name).insertOne({'num_unique':parseInt(req.body.num_unique),'time':Date.now()})
+			console.log('poggers database moment')
+		})
+		app.get('/getdata',(req,res)=>{
+			res.send(db.listCollections().toArray())
 		})
 		app.get('/',(req,res)=>{
 			res.sendFile(path.join(__dirname,'BuzzSense.html'))
