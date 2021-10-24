@@ -23,40 +23,52 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 		})
 		//
 		app.get('/mostrecentdata',(req,res)=>{
-			/*db.listCollections().toArray((err, collections) => {
-				res.send(collections);
-			});*/
-			if (req.query.floor == null){
-				res.send('you must specify a floor')
-			}
-			else if (req.query.building == null){
-				res.send('you must specify a building')
-			}
-			else{
-				db.collection(req.query.building+req.query.floor).find({}).sort({time:1}).toArray((err,result)=>{
-				var recent = result[0].num_unique
-				var avg = 0;
-				for(var i = 0; i<result.length; i++){
-					avg += result[i].num_unique
-				}
-				avg /= result.length
-				if (recent > .6*avg){
+			db.listCollections().toArray((err, collections) => {
+				const collnames = collections.map(x => x['name'])
+				if (req.query.floor == null){
 					occupancyjson = {
-						'occupancy':'high'
-					}
+							'occupancy':'no floor input'
+						}
+					res.send(occupancyjson)
 				}
-				else if (recent > .4*avg){
+				else if (req.query.building == null){
 					occupancyjson = {
-						'occupancy':'medium'
-					}
+							'occupancy':'no building input'
+						}
+					res.send(occupancyjson)
+				}
+				else if (collnames.indexOf(req.query.building+req.query.floor) == -1){
+					occupancyjson = {
+							'occupancy':'no data on specified building/floor'
+						}
+					res.send(occupancyjson)
 				}
 				else{
-					occupancyjson = {
-						'occupancy':'low'
+					db.collection(req.query.building+req.query.floor).find({}).sort({time:1}).toArray((err,result)=>{
+					var recent = result[0].num_unique
+					var avg = 0;
+					for(var i = 0; i<result.length; i++){
+						avg += result[i].num_unique
 					}
-				}
-				res.send(occupancyjson)
-			})}
+					avg /= result.length
+					if (recent > .6*avg){
+						occupancyjson = {
+							'occupancy':'high'
+						}
+					}
+					else if (recent > .4*avg){
+						occupancyjson = {
+							'occupancy':'medium'
+						}
+					}
+					else{
+						occupancyjson = {
+							'occupancy':'low'
+						}
+					}
+					res.send(occupancyjson)
+				})}
+			});
 		})
 
 		app.get('/',(req,res)=>{
