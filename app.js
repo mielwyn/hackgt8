@@ -41,14 +41,21 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 				}
 				avg /= result.length
 				if (recent > .6*avg){
-					res.send("high occupancy")
+					occupancyjson = {
+						'occupancy':'high'
+					}
 				}
 				else if (recent > .4*avg){
-					res.send("medium occupancy")
+					occupancyjson = {
+						'occupancy':'medium'
+					}
 				}
 				else{
-					res.send("low occupancy")
+					occupancyjson = {
+						'occupancy':'low'
+					}
 				}
+				res.send(occupancyjson)
 			})}
 		})
 

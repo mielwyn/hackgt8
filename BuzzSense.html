@@ -11,16 +11,14 @@
         <script>
             var whichBuilding;
             var whichFloor;
+            var occupancy = "";
             var crosslandImages = [ "./Crossland/crossland0.png","./Crossland/crossland1.png","./Crossland/crossland2.png","./Crossland/crossland3.png",
                                     "./Crossland/crossland4.png","./Crossland/crossland5.png","./Crossland/crossland6.png","./Crossland/crossland7.png"];
             var priceImages = ["./Price/price0.png","./Price/price12.png", "./Price/price34.png"];                        
             var culcImages = ["./Culc/culc1.png", "./Culc/culc2.png", "./Culc/culc3.png", "./Culc/culc4.png", "./Culc/culc5.png"];
             function getOccupancy(bld,flr)
             {
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open( "GET", 'http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr+'', false ); // false for synchronous request
-                xmlHttp.send( null );
-                return xmlHttp.responseText;
+                fetch('http://128.61.26.2:3000/mostrecentdata?building='+bld+'&floor='+flr).then(response => response.json()).then(rj => occupancy = rj);
             }
             function defaultPage(){
                 whichBuilding = "";
