@@ -9,7 +9,7 @@
 2. bluetooth LE
 
 ## setup
-Main computer setup
+### Main computer setup
 1. clone repo
 2. cd to project directory
 3. install node.js
@@ -17,7 +17,7 @@ Main computer setup
 5. node ./app.js
 6. navigate to your ip address:3000 to access the website (avoid using localhost because browsers don't like out of domain GET requests)
 
-Raspberry Pi setup
+### Raspberry Pi setup
 1. have pi
 2. put `s.sh` and `monitor.py` in the same directory (both found in `rpi-monitor` in this repo)
 3. configure the server endpoint to point to your main computer
