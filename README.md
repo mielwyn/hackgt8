@@ -21,4 +21,4 @@
 1. have pi
 2. put `s.sh` and `monitor.py` in the same directory (both found in `rpi-monitor` in this repo)
 3. configure the server endpoint to point to your main computer
-4. fill out the name field according to `building` + `floor` -- we went with `chiroom` because we tested with Chi's room
+4. fill out the name field according to `building` + `floor` -- we went with `chiroom` because we tested with Chi's room although this doesn't follow the convention we ultimately implemented
