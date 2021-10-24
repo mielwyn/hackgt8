@@ -2,18 +2,24 @@
 ## project made for hackgt8 by [Joy](https://github.com/joywying), [Lauren](https://github.com/Laireen), [Chi](https://github.com/udejiofor-chidobem), and [Micah](https://github.com/mielwyn)
 
 ## description & motivation
-An occupancy tracking system for Georgia Tech (and beyond). Collects data on level of occupancy for each floor of busy buildings using number of devices connected to wireless access points. Applications in social distancing, sustainability, accessibility.
+Like most new implementations on campus this semester, BuzzSense was designed as a response to the coronavirus. With the resurgence of in-person students on campus, it’s harder than ever to maintain proper social distancing in our shared spaces. Specifically, one of BuzzSense’s largest goals was to aid immunocompromised individuals and those with restrictions on mobility in their access to covid-safe areas. Another possible application would be toward sustainability. If there are less people in an area, lights/HVAC can be altered. Overall, we wanted an easy way to check the occupancy levels of the areas we frequently visit.
 
+...Plus, many of us students know all about the frustrating experience of looking through the 18 combined floors of Clough Commons, Price Gilbert Library, and Crosland Tower to find an open study spot.
+
+BuzzSense determines the occupancy levels of different public buildings on campus and their floors using the number of active devices connected to various access points (which correlate with the location in the building). Our program compares the number of currently active devices with prior data to see if occupancy is above or below average.
+
+Users can visit the BuzzSense website and select a building and floor to see a graphical representation of the floor’s location in the building and find the occupancy of the floor. Right now, our three levels of occupancy are “LOW”, “MEDIUM”, and “HIGH”. “MEDIUM” corresponds to the average occupancy of the building (~average number of active devices) “LOW” and “HIGH” correspond to below average occupancy and above average occupancy respectively
 ### other solutions attempted / ruled out
 
 - using SNMP to get a router's ARP table instead of actively scanning for packets and trying to isolate unique users (which would require less hardware etc)
 - Bluetooth LE
 
-## more features / roadmap
-
+## more features / roadmap / goals
+- BuzzSense mobile app
 - actually store (hashed?) mac addresses / track users over time
 - get data collected over a longer period of time to look for trends
-- make graphs & heatmaps so the website is nicer and more informative
+- make graphs & heatmaps so the website is nicer and more informative (UI Improvement)
+
 
 ## Setup
 ### Main computer setup
