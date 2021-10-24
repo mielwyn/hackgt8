@@ -21,19 +21,34 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 			db.collection(req.body.name).insertOne({'num_unique':parseInt(req.body.num_unique),'time':Date.now()})
 			console.log('poggers database moment')
 		})
-		//http://localhost:3000/mostrecentdata?zone=chiroom
+		//
 		app.get('/mostrecentdata',(req,res)=>{
 			/*db.listCollections().toArray((err, collections) => {
 				res.send(collections);
 			});*/
-			if (req.query.zone == null){
-				res.send('specify which zone you want data for with a query')
+			if (req.query.floor == null){
+				res.send('you must specify a floor')
+			}
+			else if (req.query.building == null){
+				res.send('you must specify a building')
 			}
 			else{
-				db.collection(req.query.zone).find({}).sort({time:1}).limit(1).toArray((err,result)=>{
-				res.send(result);
+				db.collection(req.query.building+req.query.floor).find({}).sort({time:1}).toArray((err,result)=>{
+				var recent = result[0].num_unique
+				var avg = 0;
+				for(var i = 0; i<result.length; i++){
+					avg += result[i].num_unique
+				}
+				avg /= result.length
+				if (recent > avg){
+					res.send("above average occupancy")
+				}
+				else{
+					res.send("below average occupancy")
+				}
 			})}
 		})
+
 		app.get('/',(req,res)=>{
 			res.sendFile(path.join(__dirname,'BuzzSense.html'))
 		})
