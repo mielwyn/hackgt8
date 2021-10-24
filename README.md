@@ -5,8 +5,8 @@
 
 ### other solutions attempted / ruled out
 
-1. using snmp to get a router's arp table instead of actively scanning (which would require less hardware etc)
-2. bluetooth LE
+1. using SNMP to get a router's ARP table instead of actively scanning for packets and trying to isolate unique users (which would require less hardware etc)
+2. Bluetooth LE
 
 ## setup
 ### Main computer setup
@@ -18,7 +18,6 @@
 6. navigate to your ip address:3000 to access the website (avoid using localhost because browsers don't like out of domain GET requests)
 
 ### Raspberry Pi setup
-1. have pi
-2. put `s.sh` and `monitor.py` in the same directory (both found in `rpi-monitor` in this repo)
-3. configure the server endpoint to point to your main computer
-4. fill out the name field according to `building` + `floor` -- we went with `chiroom` because we tested with Chi's room although this doesn't follow the convention we ultimately implemented
+1. put `s.sh` and `monitor.py` in the same directory (both found in `rpi-monitor` in this repo)
+2. configure the server endpoint to point to your main computer
+3. fill out the name field according to `building` + `floor` -- we went with `chiroom` because we tested with Chi's room although this doesn't follow the convention we ultimately implemented
