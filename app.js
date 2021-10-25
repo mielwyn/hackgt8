@@ -51,12 +51,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 						avg += result[i].num_unique
 					}
 					avg /= result.length
-					if (recent > .6*avg){
+					if (recent > 1.2*avg){
 						occupancyjson = {
 							'occupancy':'high'
 						}
 					}
-					else if (recent > .4*avg){
+					else if (recent > .8*avg){
 						occupancyjson = {
 							'occupancy':'medium'
 						}
